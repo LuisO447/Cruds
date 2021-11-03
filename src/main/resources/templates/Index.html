@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns: th="https://www.thymeleaf.org">
+    <head>
+        <title>Registro de Usuarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color: skyblue">
+        
+        <h1 style="color: darkorange">Pagina de usuarios</h1>
+        <h2 style="color: darkorange">Estos son los datos disponibles:</h2>
+        
+        <a th:href="@{/agregar}">Ingresar un nuevo usuario</a>
+        
+        <br/>
+        
+        <div th:if="${usuarios != null and !usuarios.empty}">
+            <table border="1">
+            <tr>
+                <th>Id_depto</th>
+                <th>Id_profesion</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo_electronico</th>
+                <th>Telefono</th>
+                <th>Fecha_nacimiento</th>
+                <th>Longitud</th>
+                <th>Latitud</th>
+                <th>Fecha_registro</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+                
+            </tr>
+            
+            <!-- vamos hacer una iteracion de objeto -->
+            <tr th:each="tb_usuarios : ${usuarios}">
+                <td th:text="${tb_usuarios.ID_DEPTO}"></td>
+                 <td th:text="${tb_usuarios.ID_PROFESION}"></td>
+                 <td th:text="${tb_usuarios.NOMBRE}"></td>
+                 <td th:text="${tb_usuarios.APELLIDO}"></td>
+                 <td th:text="${tb_usuarios.CORREO_ELECTRONICO}"></td>
+                 <td th:text="${tb_usuarios.TELEFONO}"></td>
+                 <td th:text="${tb_usuarios.FECHA_NACIMIENTO}"></td>
+                 <td th:text="${tb_usuarios.LONGITUD}"></td>
+                 <td th:text="${tb_usuarios.LATITUD}"></td>
+                 <td th:text="${tb_usuarios.FECHA_REGISTRO}"></td>
+                 <td><a th:href="@{/editar/} + ${tb_usuarios.ID_USUARIO}" th:text="Editar"/></td>
+                 <td><a th:href="@{/eliminar/} + ${tb_usuarios.ID_USUARIO}" th:text="Borrar"/></td> 
+                </tr>
+
+        </table>
+        
+        </div>
+        
+        <br/>
+        <a th:href="@{/crudDepto}">Crud de departamentos</a>
+        
+        <br/>
+        
+        <a th:href="@{/crudPro}">Crud de profesiones</a>
+        
+        <div th:if ="${usuarios ==null or usuarios.empty}">
+            Aun no hay usuarios.
+        </div>
+        
+    </body>
+    
+</html>

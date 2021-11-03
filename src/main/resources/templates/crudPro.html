@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns: th="https://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color: inactiveborder">
+        
+        <h1 style="color: gold">Crud de Profesiones</h1>
+        
+        <h2 style="color: gold">Lista de profesiones:</h2>
+        
+        <a th:href="@{/agregarPro}">Ingresar una nueva Profesion</a>
+        <br/>
+        
+        
+        <br/>
+        
+        <div th:if="${Profesion!= null and !Profesion.empty}">
+            
+            <table border="1">
+                
+            <tr>
+                <th>DESCRIPCION_PROFESION</th>
+                <th>Editar_Pro</th>
+                <th>Eliminar_Pro</th>
+                
+            </tr>
+            
+            <tr th:each="tb_profesion : ${Profesion}">
+            <td th:text="${tb_profesion.DESCRIPCION_PROFESION}"></td>
+            <td><a th:href="@{/editarPro/} + ${tb_profesion.ID_PROFESION}" th:text="Editar_Pro"/></td>
+            <td><a th:href="@{/eliminarPro/} + ${tb_profesion.ID_PROFESION}" th:text="Borrar_Pro"/></td>
+            </tr>
+            </table>
+        </div>
+        
+        <br/>
+        <a th:href="@{/}">Regresar al crud principal</a>
+        <br/> 
+        
+        <div th:if ="${Profesion == null or Profesion.empty}">
+            No se pudo obtener ninguna Profesion de la base de datos.
+        </div>
+        
+    </body>
+</html>

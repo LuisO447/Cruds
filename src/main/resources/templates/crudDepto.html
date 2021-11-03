@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Departamentos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color:lavender">
+        
+        <h1 style="color: beige">Crud de Departamentos:</h1>
+        
+        <a th:href="@{/agregarDepto}">Ingresar un nuevo departamento</a>
+        <br/>
+        
+        
+        <div th:if="${Departamentos!= null and !Departamentos.empty}">
+            
+            <table border="1">
+                
+            <tr>
+                <th>DESCRIPCION_DEPTO</th>
+                <th>Editar_Depto</th>
+                <th>Eliminar_Depto</th>
+                
+            </tr>
+            
+            <tr th:each="tb_departamento : ${Departamentos}">
+            <td th:text="${tb_departamento.DESCRIPCION_DEPTO}"></td>
+            <td><a th:href="@{/editarDepto/} + ${tb_departamento.ID_DEPTO}" th:text="Editar_Depto"/></td>
+            <td><a th:href="@{/eliminarDepto/} + ${tb_departamento.ID_DEPTO}" th:text="Borrar_Depto"/></td>
+            </tr>
+            </table>
+        </div>
+        
+        <br/>
+        <a th:href="@{/}">Regresar al crud principal</a>
+        <br/> 
+        
+        <div th:if ="${Departamentos ==null or Departamentos.empty}">
+            No se pudo obtener ningun departamento de la base de datos.
+        </div>
+        
+    </body>
+</html>

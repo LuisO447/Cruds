@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Departamentos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color: springgreen ">
+        <a th:href="@{/crudDepto}">Regresar</a>
+        <br/>
+        
+        <form th:action="@{/guardarDepto}" method="post" th:object="${tb_departamento}">
+            <br/>
+            <input type="hidden" name="ID_DEPTO" th:field="*{ID_DEPTO}"/>
+            <label for="DECRIPCION_DEPTO">DESCRIPCION_DEPTO:</label>
+            <input type="text" name="DESCRIPCION_DEPTO" th:field="*{DESCRIPCION_DEPTO}"/>
+            <br/>
+            
+            <br/>
+            <input type="submit" name="guardarDepto" value="Guardar"/>
+        </form>
+        
+        
+    </body>
+</html>

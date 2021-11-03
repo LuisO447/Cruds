@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Datos del usuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color: mediumspringgreen">
+        <a th:href="@{/}">Regresar</a>
+        <br/>
+        
+        <form th:action="@{/guardar}" method="post" th:object="${tb_usuarios}">
+            <br/>
+            <input type="hidden" name="ID_USUARIO" th:field="*{ID_USUARIO}"/>
+            <label for="ID_DEPTO">ID_DEPTO:</label><!-- ESTO ESTABA COMO ID_USUARIO -->
+            <input type="number" name="ID_DEPTO" th:field="*{ID_DEPTO}"/>
+            <br/>
+            <label for="ID_PROFESION">ID_PROFESION:</label>
+            <input type="number" name="ID_PROFESION" th:field="*{ID_PROFESION}"/>
+            <br/>
+            <label for="NOMBRE">NOMBRE:</label>
+            <input type="text" name="NOMBRE" th:field="*{NOMBRE}"/><!-- EL IMPUT ERA DE TIPO EMAIL PARA EMAIL? yo los fui cambiando a text -->
+            <br/>
+            <label for="APELLIDO">APELLIDO:</label>
+            <input type="text" name="APELLIDO" th:field="*{APELLIDO}"/>
+            <br/>
+            <label for="CORREO_ELECTRONICO">CORREO_ELECTRONICO:</label>
+            <input type="email" name="CORREO_ELECTRONICO" th:field="*{CORREO_ELECTRONICO}"/>
+            <br/>
+            <label for="TELEFONO">TELEFONO:</label>
+            <input type="tel" name="TELEFONO" th:field="*{TELEFONO}"/>
+            <br/>
+            <label for="FECHA_NACIMIENTO">FECHA_NACIMIENTO:</label>
+            <input type="text" name="FECHA_NACIMIENTO" th:field="*{FECHA_NACIMIENTO}"/>
+            <br/>
+            <label for="LONGITUD">LONGITUD:</label>
+            <input type="number" name="LONGITUD" th:field="*{LONGITUD}"/>
+            <br/>
+            <label for="LATITUD">LATITUD:</label>
+            <input type="number" name="LATITUD" th:field="*{LATITUD}"/>
+            <br/>
+            <label for="FECHA_REGISTRO">FECHA_REGISTRO:</label>
+            <input type="text" name="FECHA_REGISTRO" th:field="*{FECHA_REGISTRO}"/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+        
+        
+    </body>
+</html>
